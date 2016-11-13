@@ -1,0 +1,22 @@
+{
+  "name": "phobosjs-pg",
+  "version": "0.0.0",
+  "description": "Use Postgresql as your database in this ORM addon for phobos.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Mike Timofiiv (https://fiiv.io)",
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^7.1.1"
+  },
+  "peerDependencies": {
+    "pg": "^6.1.0",
+    "pg-native": "^1.10.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  }
+}

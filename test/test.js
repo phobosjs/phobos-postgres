@@ -4,7 +4,7 @@ const chai = require('chai')
 const pg = require('pg').native
 const _Module = require('../index')
 
-const TEST_PG_URI = 'postgres://postgres:@localhost:5432/travis_ci_test'
+const TEST_PG_URI = process.env.PG_URI || 'postgres://postgres:@localhost:5432/test'
 
 const expect = chai.expect
 
@@ -54,16 +54,16 @@ describe('phobos.js postgres', () => {
     expect(Model.one(111)).to.be.instanceof(Promise)
   })
 
-  // it('static#find()', done => {
-  //   _Module.Model.queryLog = (query, params) => {
-  //     expect(query).to.equal('SELECT * FROM models WHERE id = $1 LIMIT 1')
-  //     expect(params).to.contain([])
-  //
-  //     done()
-  //   }
-  //
-  //   expect(Model.find({
-  //     where: { username: 'phobosman' }
-  //   })).to.be.instanceof(Promise)
-  // })
+  it('static#find()', done => {
+    _Module.Model.queryLog = (query, params) => {
+      expect(query).to.equal('SELECT * FROM models WHERE id = $1 LIMIT 1')
+      expect(params).to.contain([])
+
+      done()
+    }
+
+    expect(Model.find({
+      where: { username: 'phobosman' }
+    })).to.be.instanceof(Promise)
+  })
 })

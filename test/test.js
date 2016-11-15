@@ -4,6 +4,7 @@ const chai = require('chai')
 const pg = require('pg').native
 const _Module = require('../index')
 
+const TEST_PG_URI = 'postgres://postgres:@localhost:5432/travis_ci_test'
 
 const expect = chai.expect
 

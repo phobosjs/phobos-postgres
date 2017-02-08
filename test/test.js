@@ -22,17 +22,20 @@ describe('phobos.js postgres', () => {
   }
 
   before(done => {
-    store = DB.init({ connection: { uri: TEST_PG_URI } })
-    Model.attribute('username', { type: 'varchar(30)' })
+    DB.init({ connection: { uri: TEST_PG_URI } }).then(pool => {
+      store = pool
 
-    attachListener(() => {})
+      Model.attribute('username', { type: 'varchar(30)' })
 
-    Model.init(store).then(() => {
-      const Billy = new Model({ username: 'Billy' })
+      attachListener(() => {})
 
-      Billy.save().then(result => {
-        billyId = result.id
-        done()
+      Model.init(store).then(() => {
+        const Billy = new Model({ username: 'Billy' })
+
+        Billy.save().then(result => {
+          billyId = result.id
+          done()
+        })
       })
     })
   })

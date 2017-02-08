@@ -12,15 +12,11 @@
     "glob": "^7.1.1",
     "inflected": "^1.1.7",
     "mongo-sql": "^2.7.7",
-    "phobosjs-model": "0.0.0"
-  },
-  "peerDependencies": {
     "pg": "^6.1.0",
-    "inflected": "^1.1.7"
+    "phobosjs-model": "^0.0.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
     "dotenv": "^4.0.0",
     "mocha": "^3.1.2"
   }

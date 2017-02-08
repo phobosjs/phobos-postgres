@@ -126,8 +126,26 @@ describe('phobos.js postgres', () => {
     const params = []
 
     Model.runQuery(query, params, { lean: true }).then(result => {
-      expect(result).to.deep.equal({ result: [], count: 0 })
+      expect(result).to.deep.equal([])
       done()
+    })
+  })
+
+  it('static#runQuery() stream', done => {
+    _Module.Model.queryLog = (query, params) => {}
+
+    const query = "select * from models"
+    const params = []
+
+    Model.runQuery(query, params, { stream: true }).then(stream => {
+      const result = []
+
+      stream.on('data', row => result.push(row))
+
+      stream.on('end', () => {
+        expect(result.length).to.equal(1)
+        done()
+      })
     })
   })
 

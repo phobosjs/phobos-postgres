@@ -1,6 +1,6 @@
 {
   "name": "phobosjs-pg",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Use Postgresql as your database in this ORM addon for phobos.js",
   "main": "index.js",
   "scripts": {
